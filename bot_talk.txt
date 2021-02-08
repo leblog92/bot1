@@ -1,0 +1,17 @@
+https://ttsmp3.com/text-to-speech/French/
+
+<prosody pitch="-5%">La séance se terminera dans <break time="0.2s"/><emphasis level="strong">cinq</emphasis> minutes.</prosody>
+
+<prosody pitch="-5%">Il est exactement <break time="0.2s"/><emphasis level="strong">quinze</emphasis> heure. L'atelier multimédia est malheureusement déjà terminé ! Merci de votre participation.</prosody>
+
+<prosody pitch="-5%">Il est exactement <break time="0.2s"/><emphasis level="strong">seize</emphasis> heure. La séance de quinze heure est terminée. Merci de bien vouloir fermer votre session.</prosody>
+
+<prosody pitch="-5%">Il est exactement <break time="0.2s"/>dissette heure. La séance de seize heure est terminée. Merci de bien vouloir fermer votre session.</prosody>
+
+<prosody pitch="-5%">La médiathèque fermera dans <break time="0.2s"/><emphasis level="strong">trente</emphasis> minutes.</prosody>
+
+<prosody pitch="-5%">La médiathèque fermera dans <break time="0.2s"/><emphasis level="strong">quinze</emphasis> minutes.</prosody>
+
+<prosody pitch="-5%">La médiathèque fermera dans <break time="0.2s"/><emphasis level="strong">cinq</emphasis> minutes.</prosody>
+
+<prosody pitch="-5%">La médiathèque fermera dans <break time="0.2s"/><emphasis level="strong">une</emphasis> minutes. Merci de bien vouloir fermer votre session.</prosody>

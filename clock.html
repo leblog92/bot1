@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+
+<head>
+<meta charset="utf-8">
+<title>TimerBot</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+<style>
+html,body{
+height:100%;
+margin:0;
+background-color:#000000;
+color:#00ff00;
+background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width='100%25' height='100%25' style='background-color:%23000' viewBox='0 0 100 100' preserveAspectRatio='none'%3E %3Cdefs%3E %3Cfilter height='200%25' width='200%25' y='-50%25' x='-50%25' id='blur'%3E %3CfeGaussianBlur stdDeviation='0.5' in='SourceGraphic'/%3E %3C/filter%3E %3C/defs%3E %3Cg stroke='%2300ff00' stroke-width='0.1' filter='url(%23blur)' opacity='0.5'%3E %3Cpolygon points='0,50 100,50' fill='none'/%3E %3Cpolygon points='0,50 100,50' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,5'/%3E%3C/polygon%3E %3Cpolygon points='0,55 100,55' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,10'/%3E%3C/polygon%3E %3Cpolygon points='0,65 100,65' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,20'/%3E%3C/polygon%3E %3Cpolygon points='0,85 100,85' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,27'/%3E%3C/polygon%3E %3Cpolygon points='50,25 -50,100' fill='none'/%3E %3Cpolygon points='50,25 -25,100' fill='none'/%3E %3Cpolygon points='50,25 0,100' fill='none'/%3E %3Cpolygon points='50,25 25,100' fill='none'/%3E %3Cpolygon points='50,25 50,100' fill='none'/%3E %3Cpolygon points='50,25 75,100' fill='none'/%3E %3Cpolygon points='50,25 100,100' fill='none'/%3E %3Cpolygon points='50,25 125,100' fill='none'/%3E %3Cpolygon points='50,25 150,100' fill='none'/%3E %3C/g%3E %3Crect fill='%23000' x='0' y='0' width='100' height='50'/%3E %3C/svg%3E");
+}
+#div1{
+position:fixed;
+font-family:'Press Start 2P',cursive;
+font-size:100px;
+user-select: none;
+}
+#div2{
+position:fixed;
+font-family:Consolas;
+margin:10px;
+line-height:175%;
+}
+#st{
+border-radius:10px 10px 10px;
+border:8px solid #00ff00;
+padding:20px;
+user-select: none;
+cursor:pointer;
+font-family:'Press Start 2P',cursive;
+font-size:50px;
+}
+input{
+width:50px;
+}
+a{
+color:#00ff00;
+}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2">
+<a href="https://www.time.is/" target="blank">Check delay</a><br>
+<label for="minutes">Set minutes :</label>
+<input type="number" id="minutes" name="minutes" min="0" max="59" step="any" value="6"><br>
+<label for="minutes">Set seconds :</label>
+<input type="number" id="seconds" name="seconds" min="0" max="59" step="any" value="22.1"><br><br><br>
+<span id="st" onclick="start()">Start</span>
+</div>
+
+<script>
+var div1=document.getElementById("div1");
+var div2=document.getElementById("div2");
+var div1w=div1.offsetWidth;
+var div1h=div1.offsetHeight;
+
+function clock(){
+
+var minutes=document.getElementById("minutes").value;
+var seconds=document.getElementById("seconds").value;
+
+var ww=window.innerWidth;
+var wh=window.innerHeight;
+
+var d1=new Date();
+var h1=d1.getHours();
+var m1=d1.getMinutes();
+var s1=d1.getSeconds();
+if(h1<10){h1="0"+h1;}
+if(m1<10){m1="0"+m1;}
+if(s1<10){s1="0"+s1;}
+var time1=h1+":"+m1+":"+s1;
+
+var d2=new Date(d1.getTime()-((minutes*60*1000)+(seconds*1000)));
+var h2=d2.getHours();
+var m2=d2.getMinutes();
+var s2=d2.getSeconds();
+if(h2<10){h2="0"+h2;}
+if(m2<10){m2="0"+m2;}
+if(s2<10){s2="0"+s2;}
+var time2=h2+":"+m2+":"+s2;
+
+div1.innerHTML=time2;
+document.title=time2;
+
+div1w=div1.offsetWidth;
+div1h=div1.offsetHeight;
+div1.style.left=(Math.round(ww/2)-(div1w/2))+"px";
+div1.style.top=(Math.round(wh/2)-(div1h/2))+"px";
+
+if(time2=="15:55:00"||time2=="16:55:00"){new Audio("5min.mp3").play();}
+if(time2=="16:00:00"){new Audio("16h.mp3").play();}
+if(time2=="17:00:00"){new Audio("17h.mp3").play();}
+if(time2=="17:30:00"){new Audio("f30min.mp3").play();}
+if(time2=="17:45:00"){new Audio("f15min.mp3").play();}
+if(time2=="17:55:00"){new Audio("f5min.mp3").play();}
+if(time2=="17:59:00"){new Audio("f1min.mp3").play();}
+}
+
+function start(){div2.style.display="none";setInterval(clock,1000);}
+</script>
+</body>
+</html>

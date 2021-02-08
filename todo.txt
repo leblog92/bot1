@@ -1,0 +1,5 @@
+1)install python3.9
+2)copy bot folder on C:\
+3)Windows+R
+4)type shell:startup
+5)paste run_bot.bat

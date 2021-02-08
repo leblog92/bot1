@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+
+<head>
+<link rel="icon" type="image/png" href="bot.png" />
+<meta charset="utf-8">
+<title>TimerBot</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+<style>
+html,body{
+height:100%;
+margin:0;
+background-color:#000000;
+color:#00ff00;
+background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width='100%25' height='100%25' style='background-color:%23000' viewBox='0 0 100 100' preserveAspectRatio='none'%3E %3Cdefs%3E %3Cfilter height='200%25' width='200%25' y='-50%25' x='-50%25' id='blur'%3E %3CfeGaussianBlur stdDeviation='0.5' in='SourceGraphic'/%3E %3C/filter%3E %3C/defs%3E %3Cg stroke='%2300ff00' stroke-width='0.1' filter='url(%23blur)' opacity='0.5'%3E %3Cpolygon points='0,50 100,50' fill='none'/%3E %3Cpolygon points='0,50 100,50' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,5'/%3E%3C/polygon%3E %3Cpolygon points='0,55 100,55' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,10'/%3E%3C/polygon%3E %3Cpolygon points='0,65 100,65' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,20'/%3E%3C/polygon%3E %3Cpolygon points='0,85 100,85' fill='none'%3E%3CanimateMotion begin='0s' dur='2s' repeatCount='indefinite' values='0,0;0,27'/%3E%3C/polygon%3E %3Cpolygon points='50,25 -50,100' fill='none'/%3E %3Cpolygon points='50,25 -25,100' fill='none'/%3E %3Cpolygon points='50,25 0,100' fill='none'/%3E %3Cpolygon points='50,25 25,100' fill='none'/%3E %3Cpolygon points='50,25 50,100' fill='none'/%3E %3Cpolygon points='50,25 75,100' fill='none'/%3E %3Cpolygon points='50,25 100,100' fill='none'/%3E %3Cpolygon points='50,25 125,100' fill='none'/%3E %3Cpolygon points='50,25 150,100' fill='none'/%3E %3C/g%3E %3Crect fill='%23000' x='0' y='0' width='100' height='50'/%3E %3C/svg%3E");
+}
+
+#div1{
+position:fixed;
+font-family:'Press Start 2P',cursive;
+font-size:100px;
+user-select:none;
+}
+
+#div2{
+position:fixed;
+top:50%;
+left:50%;
+margin-left:-250px;
+margin-top:-50px;
+font-family:'Press Start 2P',cursive;
+font-size:100px;
+user-select:none;
+cursor:pointer;
+}
+
+#div3{
+position:fixed;
+top:0;
+left:0;
+font-family:'Press Start 2P',cursive;
+user-select:none;
+}
+</style>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2" onclick="start()">Start</div>
+<div id="div3"></div>
+<script src="date.js"></script>
+<script>
+var div1=document.getElementById("div1");
+var div1w=div1.offsetWidth;
+var div1h=div1.offsetHeight;
+
+var ww=window.innerWidth;
+var wh=window.innerHeight;
+
+var jtt2=new Date(jtt.getTime()+3600000);
+
+function realtime(){
+jtt2=new Date(jtt2.getTime()+5);
+div3.innerHTML=jtt2;
+}
+setInterval(realtime,5);
+
+function clock(){
+ww=window.innerWidth;
+wh=window.innerHeight;
+
+var d2=jtt2;
+var h2=d2.getHours();
+var m2=d2.getMinutes();
+var s2=d2.getSeconds();
+if(h2<10){h2="0"+h2;}
+if(m2<10){m2="0"+m2;}
+if(s2<10){s2="0"+s2;}
+var time2=h2+":"+m2+":"+s2;
+
+div1.innerHTML=time2;
+document.title=time2;
+
+div1w=div1.offsetWidth;
+div1h=div1.offsetHeight;
+div1.style.left=(Math.round(ww/2)-(div1w/2))+"px";
+div1.style.top=(Math.round(wh/2)-(div1h/2))+"px";
+}
+
+function speak(){
+var d2=jtt2;
+var h2=d2.getHours();
+var m2=d2.getMinutes();
+var s2=d2.getSeconds();
+if(h2<10){h2="0"+h2;}
+if(m2<10){m2="0"+m2;}
+if(s2<10){s2="0"+s2;}
+var time2=h2+":"+m2+":"+s2;
+
+if(time2=="15:00:00"){new Audio("15h.mp3").play();}
+if(time2=="15:55:00"||time2=="16:55:00"){new Audio("5min.mp3").play();}
+if(time2=="16:00:00"){new Audio("16h.mp3").play();}
+if(time2=="17:00:00"){new Audio("17h.mp3").play();}
+if(time2=="17:30:00"){new Audio("f30min.mp3").play();}
+if(time2=="17:45:00"){new Audio("f15min.mp3").play();}
+if(time2=="17:55:00"){new Audio("f5min.mp3").play();}
+if(time2=="17:59:00"){new Audio("f1min.mp3").play();}
+}
+
+function start(){div2.style.display="none";setInterval(speak,1000);setInterval(clock,5);}
+</script>
+</body>
+</html>
